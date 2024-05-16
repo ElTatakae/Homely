@@ -1,69 +1,78 @@
-
 {% extends 'base.html'%}
 {% load static %}
 
 {% block title %}Home{% endblock %}
 
 
+
 {% block loader %}
-  <div id="loader" class="page page-center">
-    <div class="container container-slim py-4">
-      <div class="text-center">
-        <div class="mb-3">
-          <a href="." class="navbar-brand navbar-brand-autodark"><img src="{% static 'img/iconHomely.jpeg'%}" height="36" alt=""></a>
-        </div>
-        <!-- <div class="text-muted mb-3">Cargando, por favor espera...</div>         -->
-        <div class="progress progress-sm">
-          <div class="progress-bar progress-bar-indeterminate"></div>
-        </div>
+<div id="loader" class="page page-center">
+  <div class="container container-slim py-4">
+    <div class="text-center">
+      <div class="mb-3">
+        <a href="." class="navbar-brand navbar-brand-autodark"><img src="{% static 'img/iconHomely.jpeg'%}" height="36"
+            alt=""></a>
+      </div>
+      <!-- <div class="text-muted mb-3">Cargando, por favor espera...</div>         -->
+      <div class="progress progress-sm">
+        <div class="progress-bar progress-bar-indeterminate"></div>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
 
 
 
 
 {% block contenido %}
-<div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <!-- <h3 class="card-title">Carousel with captions</h3> -->
-      </div>
-      <div class="card-body">
-        <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-50" alt="" src="{% static 'img/servicios1.png' %}">
-              <div class="carousel-caption-background d-none d-md-block"></div>
-              <div class="carousel-caption d-none d-md-block">
-                <h3>Slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-50" alt="" src="{% static 'img/servicios-hogar.jpg' %}">
-              <div class="carousel-caption-background d-none d-md-block"></div>
-              <div class="carousel-caption d-none d-md-block">
-                <h3>Slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </div>
-            </div>
 
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div id="carousel-captions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" alt="" src="{% static 'photos/coffee-on-a-table-with-other-items.jpg' %}">
+                <div class="carousel-caption-background d-none d-md-block"></div>
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" alt=""
+                  src="{% static 'photos/young-entrepreneur-working-from-a-modern-cafe-2.jpg' %}">
+                <div class="carousel-caption-background d-none d-md-block"></div>
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-captions" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-captions" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </a>
           </div>
-          <a class="carousel-control-prev" href="#carousel-captions" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-captions" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </a>
         </div>
       </div>
     </div>
   </div>
 
-
-  
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6 col-lg-3">
+      <a href="#" class="card card-link card-link-pop text-center">
+        <div class="card-body">Ver Servicios</div>
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
