@@ -20,6 +20,8 @@ from .views import HomePageView
 from django.contrib.auth import views
 from django.contrib.auth.views import LoginView, LogoutView
 from Homely import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -29,4 +31,4 @@ urlpatterns = [
     path('registrar/', views.registrar, name='registrar'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='home.html'), name='logout'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
