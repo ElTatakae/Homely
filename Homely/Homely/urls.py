@@ -16,10 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import HomePageView
+from django.contrib.auth import views
+from django.contrib.auth.views import LoginView, LogoutView
+from Homely import views
 
 
 urlpatterns = [
-    path('', include('blog.urls')),
+    path('', HomePageView.as_view(), name='home'),
     path('general/', include('general.urls')),
     path('admin/', admin.site.urls),
+    path('registrar/', views.registrar, name='registrar'),
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='home.html'), name='logout'),
 ]
