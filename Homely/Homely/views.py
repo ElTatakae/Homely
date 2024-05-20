@@ -13,11 +13,10 @@ from django.views.generic import ListView, CreateView
 from django.db.models import Q
 from .forms import CustomUserCreationForm
 
-
-
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
 
 def registrar(request):
     data = {
