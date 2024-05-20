@@ -174,51 +174,9 @@
                   </span>
                 </a>
               </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside" role="button" aria-expanded="false">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                      <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                      <path d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                      <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                    </svg>
-                  </span>
-                  <span class="nav-link-title">
-                    Categorías
-                  </span>
-                </a>
-                <div class="dropdown-menu">
-                  <div class="dropdown-menu-column">
-                    <a class="dropdown-item" href="#">
-                      Jardinería
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Fontanería
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Electricidad
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Limpieza
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Pintura
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Reparaciones generales
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Sin categorizar
-                    </a>
-                  </div>
-                </div>
-              </li>
-
+              {% block categorias %}
+        
+            {% endblock %}
               <li class="nav-item dropdown" id="register-dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                   role="button" aria-expanded="false">
