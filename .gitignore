@@ -1,2 +1,5 @@
 entornoV/
 Homely/db.sqlite3
+Homely/general/__pycache__
+Homely/Homely/__pycache__
+**/__pycache__/ 
