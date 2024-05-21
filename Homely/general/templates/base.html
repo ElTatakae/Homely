@@ -17,6 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <title> {% block title%}Base {% endblock %}</title>
+  {% block estaticos %}
   <link rel="icon" type="image/x-icon" href="{% static 'img/faviconHomely.ico' %}">
   <!-- CSS files -->
   <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet" />
@@ -24,6 +25,8 @@
   <link href="{% static 'css/tabler-payments.min.css' %}" rel="stylesheet" />
   <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet" />
   <link href="{% static 'css/demo.min.css' %}" rel="stylesheet" />
+  {% endblock %}
+
   <style>
     @import url('https://rsms.me/inter/inter.css');
 
@@ -71,7 +74,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-          <a href="">
+          <a href="{% url 'general:home'%}">
             <img src="{% static 'img/iconHomely.jpeg' %}" width="110" height="32" alt="Homely"
               class="navbar-brand-image">Homely
           </a>
@@ -85,29 +88,22 @@
           </div>
           {% block usuario %}
           <!-- Sidebar -->
-            <div class="sidebar">
-              <!-- Sidebar user panel (optional) -->
-              <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="info">
-                  <a href="#">Usuario: {{ user.username }}</a>
-                  <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit">logout</button>
-                  </form>
-                </div>
-              </div>
-          {% endblock %}
+          <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+
+       
+            {% endblock %}
+          </div>
         </div>
-      </div>
     </header>
     {% block menu %}
     <header class="navbar-expand-md">
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div class="navbar">
-          <div class="container-xl">
+          <div class="container-xxl">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="./">
+                <a class="nav-link" href="{% url 'general:home'%}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -156,7 +152,57 @@
                   </span>
                 </a>
               </li>
-              
+            
+
+
+              {% block categorias %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                  role="button" aria-expanded="false">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                      <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                      <path d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                      <path d="M14 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Categorías
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-menu-column">
+                    {% for categoria in categorias %}
+                    <a class="dropdown-item" href="{% url 'catalogos:listar_servicios_por_categoria' categoria.id %}">                      {{ categoria.nombre }}
+                    </a>
+                    {% endfor %}
+                  </div>
+                </div>
+              </li>
+              {% endblock %}
+              {% if not user.is_authenticated %}
+              <li class="nav-item dropdown" id="register-dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button"
+                  aria-expanded="false">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M15 15l3.35 3.35" /><path d="M9 15l-3.35 3.35" /><path d="M5.65 5.65l3.35 3.35" /><path d="M18.35 5.65l-3.35 3.35" /></svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Registrate en Homely
+                  </span>
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{% url 'registrar'%}">
+                    Registrarse como proveedor
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+
+              {% if not user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="/login">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -174,46 +220,50 @@
                   </span>
                 </a>
               </li>
-              {% block categorias %}
-        
-            {% endblock %}
-              <li class="nav-item dropdown" id="register-dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+              {% endif %}
+
+              {% if  user.is_authenticated %}
+              <li class="nav-item" id="register-dropdown">
+                <a class="nav-link" href="{% url 'registrar'%}">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M15 15l3.35 3.35" /><path d="M9 15l-3.35 3.35" /><path d="M5.65 5.65l3.35 3.35" /><path d="M18.35 5.65l-3.35 3.35" /></svg>
+                    </span>
+                    <span class="nav-link-title">
+                        Registrate como proveedor
+                    </span>
+                </a>
+            </li>
+              {% endif %}
+              
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                   role="button" aria-expanded="false">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <circle cx="12" cy="7" r="4" />
-                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                    </svg>
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
                   </span>
                   <span class="nav-link-title">
-                    Registrate en Homely
+                    Mi cuenta
                   </span>
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/registrar" target="_blank" rel="noopener">
-                    Registrarse como proveedor
-                  </a>
+                  <div class="dropdown-menu-column">
+                    <a class="dropdown-item" href="#"> {{ user.username }} </a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesion</a>             
+                    </a>
+                  </div>
                 </div>
               </li>
+              {% endif %}
+
+           
             </ul>
-            <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-              <form action="./" method="get" autocomplete="off" novalidate>
-                <div class="input-icon">
-                  <span class="input-icon-addon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
-                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                      <path d="M21 21l-6 -6" />
-                    </svg>
-                  </span>
-                  <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
-                </div>
-              </form>
-            </div>
+        
           </div>
         </div>
       </div>
@@ -270,10 +320,10 @@
         </div>
         {% endblock %}
       </footer>
-      
+
     </div>
   </div>
-  
+
   <!-- Libs JS -->
   <!-- Tabler Core -->
   {% block scripts %}
@@ -289,18 +339,18 @@
       }, 780); // tiempo en el que se oculta el loader
     });
   </script>
- <!--   Script para mostrar el menú desplegable-->
+  <!--   Script para mostrar el menú desplegable-->
   <script>
-    $(document).ready(function(){
-      $('li.dropdown').hover(function() {
+    $(document).ready(function () {
+      $('li.dropdown').hover(function () {
         $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-      }, function() {
+      }, function () {
         $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
       });
     });
-    </script>
+  </script>
 
-   
+
   {% endblock %}
 </body>
 
