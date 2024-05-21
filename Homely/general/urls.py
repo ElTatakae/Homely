@@ -8,6 +8,5 @@ name_app = 'general'
  
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
-    
     path('login/', LoginView.as_view(template_name='home.html'), name='login'),
 ]
