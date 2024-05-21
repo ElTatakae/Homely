@@ -20,13 +20,16 @@ from .views import HomePageView
 from django.contrib.auth import views
 from django.contrib.auth.views import LoginView, LogoutView
 from Homely import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
-    path('general/', include('general.urls')),
+    path('general/', include(('general.urls', 'general'))),
     path('admin/', admin.site.urls),
     path('registrar/', views.registrar, name='registrar'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='home.html'), name='logout'),
-]
+    path('catalogos/', include(('catalogos.urls', 'catalogos'))),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

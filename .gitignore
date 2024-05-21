@@ -1,1 +1,9 @@
 entornoV/
+Homely/db.sqlite3
+Homely/general/__pycache__
+Homely/Homely/__pycache__
+**/__pycache__/ 
+Homely/Homely/__pycache__/settings.cpython-310.pyc
+Homely/Homely/__pycache__/urls.cpython-310.pyc
+Homely/general/__pycache__/urls.cpython-310.pyc
+Homely/general/__pycache__/views.cpython-310.pyc

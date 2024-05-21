@@ -12,12 +12,18 @@ from django.contrib import messages
 from django.views.generic import ListView, CreateView
 from django.db.models import Q
 from .forms import CustomUserCreationForm
+from catalogos.models import Categoria
 
 
 
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorias'] = Categoria.objects.all()
+        return context
 
 def registrar(request):
     data = {
