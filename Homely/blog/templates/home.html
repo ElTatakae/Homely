@@ -44,7 +44,7 @@
   <div class="dropdown-menu">
     <div class="dropdown-menu-column">
       {% for categoria in categorias %}
-      <a class="dropdown-item" href="#">
+      <a class="dropdown-item" href="{% url 'catalogos:listar_servicios_por_categoria' categoria.id %}">
         {{ categoria.nombre }}
       </a>
       {% endfor %}
